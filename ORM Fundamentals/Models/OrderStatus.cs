@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace ORM_Fundamentals.Models
 {
-    internal class OrderStatus
+    public enum OrderStatus
     {
+        NotStarted,
+        Loading,
+        InProgress,
+        Arrived,
+        Unloading,
+        Cancelled,
+        Done
     }
 }
