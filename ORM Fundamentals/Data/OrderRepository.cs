@@ -36,18 +36,15 @@ namespace ORM_Fundamentals.Data
 
         public List<Order> GetOrdersByFilter(DateTime startDate, DateTime endDate, OrderStatus status, int productId)
         {
-            string statusString = status.ToString(); // Преобразование OrderStatus в строку
             return _context.Orders
-                .Where(o => o.CreatedDate >= startDate && o.CreatedDate <= endDate && o.Status == statusString && o.ProductId == productId)
+                .Where(o => o.CreatedDate >= startDate && o.CreatedDate <= endDate && o.Status == status && o.ProductId == productId)
                 .ToList();
         }
 
         public void BulkDeleteOrdersByFilter(DateTime startDate, DateTime endDate, OrderStatus status, int productId)
         {
-            string statusString = status.ToString(); // Преобразование OrderStatus в строку
-
             var ordersToDelete = _context.Orders
-                .Where(o => o.CreatedDate >= startDate && o.CreatedDate <= endDate && o.Status == statusString && o.ProductId == productId)
+                .Where(o => o.CreatedDate >= startDate && o.CreatedDate <= endDate && o.Status == status && o.ProductId == productId)
                 .ToList();
 
             _context.Orders.RemoveRange(ordersToDelete);

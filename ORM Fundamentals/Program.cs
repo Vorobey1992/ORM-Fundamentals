@@ -22,7 +22,7 @@ using (var context = new AppDbContext())
     var newOrder = new Order
     {
         ProductId = newProduct.Id,
-        Status = OrderStatus.NotStarted.ToString(),
+        Status = OrderStatus.NotStarted,
         CreatedDate = DateTime.Now,
         UpdatedDate = DateTime.Now
     };
